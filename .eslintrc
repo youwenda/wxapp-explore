@@ -1,0 +1,15 @@
+{
+  "extends": "airbnb-base",
+  "plugins": [
+    "import"
+  ],
+  "globals": {
+    "App": true,
+    "Page": true,
+    "getApp": true,
+    "wx": true
+  },
+  "rules": {
+    "comma-dangle": ["error", "never"]
+  }
+}
