@@ -1,4 +1,5 @@
-"use strict";var exports=module.exports={};var global = window = {
+"use strict";var exports=module.exports={};
+var global = window = {
   Array: Array,
   Date: Date,
   Error: Error,
@@ -12,6 +13,4 @@
   clearTimeout: clearTimeout,
   setInterval: setInterval,
   clearInterval: clearInterval
-};
-
-module.exports = require('./_global.js').document && document.documentElement;
+};module.exports = require('./_global.js').document && document.documentElement;

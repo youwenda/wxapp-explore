@@ -1,5 +1,6 @@
 "use strict";var exports=module.exports={};
 
+
 var _promise = require('./npm/babel-runtime/core-js/promise.js');
 
 var _promise2 = _interopRequireDefault(_promise);

@@ -4,9 +4,12 @@
     "stage-0"
   ],
   "plugins": [
+    "syntax-export-extensions",
+    "transform-export-extensions",
     "transform-runtime"
   ],
   "ignore": [
-    "node_modules/**"
+    "node_modules/babel-runtime/**/*.js",
+    "node_modules/core-js/**/*.js"
   ]
 }

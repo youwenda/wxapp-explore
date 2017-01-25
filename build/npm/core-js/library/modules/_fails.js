@@ -1,9 +1,8 @@
 "use strict";var exports=module.exports={};
-
-module.exports = function (exec) {
+module.exports = function(exec){
   try {
     return !!exec();
-  } catch (e) {
+  } catch(e){
     return true;
   }
 };

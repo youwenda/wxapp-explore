@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-
 require('../modules/es6.object.to-string.js');
 require('../modules/es6.string.iterator.js');
 require('../modules/web.dom.iterable.js');

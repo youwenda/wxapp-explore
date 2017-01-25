@@ -1,5 +1,6 @@
 "use strict";var exports=module.exports={};
 
+
 // index.js
 // 获取应用实例
 var app = getApp();

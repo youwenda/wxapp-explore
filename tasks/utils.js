@@ -2,6 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const minimatch = require('minimatch');
 const config = require('./config');
 
 let babelFileData = null;
@@ -74,4 +75,33 @@ exports.getBabelConfig = function getBabelConfig() {
     babelFileData = JSON.parse(content);
   }
   return babelFileData;
+};
+
+/**
+ * @param {string} file
+ * @returns {boolean}
+ */
+function match(file, role) {
+  if (typeof role === 'string') {
+    return minimatch(file, role);
+  } else if (Array.isArray(role)) {
+    for (const r of role) {
+      if (match(file, r)) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+exports.shouldBabelIgnore = function shouldBabelIgnore(file) {
+  const babelConfig = exports.getBabelConfig();
+  if (babelConfig.only) {
+    return !match(file, babelConfig.only);
+  }
+  if (!babelConfig.ignore) {
+    return false;
+  }
+
+  return match(file, babelConfig.ignore);
 };
