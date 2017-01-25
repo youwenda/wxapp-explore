@@ -48,3 +48,13 @@ gulp.task('watch', ['transform'], () => {
   });
 });
 
+gulp.task('build', ['transform'], () => {
+  return gulp.src(['./build/**/*.js', './build/*.js'])
+  .pipe($.uglify({
+    compress: {
+      drop_console: true,
+      drop_debugger: true
+    }
+  }))
+  .pipe(gulp.dest('./build/'));
+});
