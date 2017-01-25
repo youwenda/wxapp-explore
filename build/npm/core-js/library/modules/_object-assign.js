@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 // 19.1.2.1 Object.assign(target, source, ...)
 
 var _keys = require('../../../babel-runtime/core-js/object/keys.js');
@@ -52,4 +51,3 @@ module.exports = !$assign || require('./_fails.js')(function () {
     }
   }return T;
 } : $assign;
-  

@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 var _getPrototypeOf = require('../../../babel-runtime/core-js/object/get-prototype-of.js');
 
@@ -20,4 +19,3 @@ module.exports = _getPrototypeOf2.default || function (O) {
     return O.constructor.prototype;
   }return O instanceof Object ? ObjectProto : null;
 };
-  

@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 var _getOwnPropertyNames = require('../../../babel-runtime/core-js/object/get-own-property-names.js');
 
@@ -14,4 +13,3 @@ var $keys = require('./_object-keys-internal.js'),
 exports.f = _getOwnPropertyNames2.default || function getOwnPropertyNames(O) {
   return $keys(O, hiddenKeys);
 };
-  

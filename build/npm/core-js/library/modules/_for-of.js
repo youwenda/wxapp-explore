@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 var ctx = require('./_ctx.js'),
     call = require('./_iter-call.js'),
@@ -31,4 +30,3 @@ var _exports = module.exports = function (iterable, entries, fn, that, ITERATOR)
 };
 _exports.BREAK = BREAK;
 _exports.RETURN = RETURN;
-  

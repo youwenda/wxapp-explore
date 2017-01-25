@@ -1,5 +1,4 @@
-"use strict";var exports=module.exports={};
-  var global = window = {
+"use strict";var exports=module.exports={};var global = window = {
   Array: Array,
   Date: Date,
   Error: Error,
@@ -21,4 +20,3 @@ var global = require('./_global.js'),
 module.exports = function (key) {
   return store[key] || (store[key] = {});
 };
-  

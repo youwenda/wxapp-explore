@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 // false -> Array#indexOf
 // true  -> Array#includes
@@ -24,4 +23,3 @@ module.exports = function (IS_INCLUDES) {
     }return !IS_INCLUDES && -1;
   };
 };
-  

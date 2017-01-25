@@ -1,5 +1,4 @@
-"use strict";var exports=module.exports={};
-  var process={};var global = window = {
+"use strict";var exports=module.exports={};var process={};var global = window = {
   Array: Array,
   Date: Date,
   Error: Error,
@@ -319,4 +318,3 @@ $export($export.S + $export.F * !(USE_NATIVE && require('./_iter-detect.js')(fun
     return capability.promise;
   }
 });
-  

@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 // optional / simple context binding
 var aFunction = require('./_a-function.js');
@@ -24,4 +23,3 @@ module.exports = function (fn, that, length) {
     return fn.apply(that, arguments);
   };
 };
-  

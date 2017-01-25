@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 // getting tag from 19.1.3.6 Object.prototype.toString()
 var cof = require('./_cof.js'),
@@ -27,4 +26,3 @@ module.exports = function (it) {
   // ES3 arguments fallback
   : (B = cof(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : B;
 };
-  

@@ -1,5 +1,4 @@
-"use strict";var exports=module.exports={};
-  var global = window = {
+"use strict";var exports=module.exports={};var global = window = {
   Array: Array,
   Date: Date,
   Error: Error,
@@ -28,4 +27,3 @@ for (var collections = ['NodeList', 'DOMTokenList', 'MediaList', 'StyleSheetList
   if (proto && !proto[TO_STRING_TAG]) hide(proto, TO_STRING_TAG, NAME);
   Iterators[NAME] = Iterators.Array;
 }
-  

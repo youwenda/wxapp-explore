@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 var _typeof3 = require('./typeof.js');
 
@@ -32,4 +31,3 @@ exports.default = typeof _symbol2.default === "function" && _typeof(_iterator2.d
 } : function (obj) {
   return obj && typeof _symbol2.default === "function" && obj.constructor === _symbol2.default && obj !== _symbol2.default.prototype ? "symbol" : typeof obj === "undefined" ? "undefined" : _typeof(obj);
 };
-  

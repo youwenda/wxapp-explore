@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 var _getOwnPropertyDescriptor = require('../../../babel-runtime/core-js/object/get-own-property-descriptor.js');
 
@@ -23,4 +22,3 @@ exports.f = require('./_descriptors.js') ? gOPD : function getOwnPropertyDescrip
   } catch (e) {/* empty */}
   if (has(O, P)) return createDesc(!pIE.f.call(O, P), O[P]);
 };
-  

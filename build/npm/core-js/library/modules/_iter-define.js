@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 var LIBRARY = require('./_library.js'),
     $export = require('./_export.js'),
@@ -85,4 +84,3 @@ module.exports = function (Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE
   }
   return methods;
 };
-  

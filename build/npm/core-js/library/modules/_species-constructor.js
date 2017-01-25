@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 // 7.3.20 SpeciesConstructor(O, defaultConstructor)
 var anObject = require('./_an-object.js'),
@@ -10,4 +9,3 @@ module.exports = function (O, D) {
       S;
   return C === undefined || (S = anObject(C)[SPECIES]) == undefined ? D : aFunction(S);
 };
-  

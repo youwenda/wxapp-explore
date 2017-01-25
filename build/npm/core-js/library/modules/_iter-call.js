@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 // call something on iterator step with safe closing on error
 var anObject = require('./_an-object.js');
@@ -13,4 +12,3 @@ module.exports = function (iterator, fn, value, entries) {
     throw e;
   }
 };
-  

@@ -146,9 +146,7 @@ module.exports = function transform(from, to, targets = {}) {
     return `require('${relative}')`;
   });
 
-  code = `"use strict";var exports=module.exports={};
-  ${code}
-  `;
+  code = `"use strict";var exports=module.exports={};${code}`;
 
   mkdirp.sync(to.dir);
   fs.writeFileSync(to.file, code);

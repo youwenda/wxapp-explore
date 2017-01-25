@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 var _typeof2 = require('../../../babel-runtime/helpers/typeof.js');
 
@@ -68,4 +67,3 @@ var meta = module.exports = {
   getWeak: getWeak,
   onFreeze: onFreeze
 };
-  

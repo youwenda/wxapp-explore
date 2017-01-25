@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 var create = require('./_object-create.js'),
     descriptor = require('./_property-desc.js'),
@@ -15,4 +14,3 @@ module.exports = function (Constructor, NAME, next) {
   Constructor.prototype = create(IteratorPrototype, { next: descriptor(1, next) });
   setToStringTag(Constructor, NAME + ' Iterator');
 };
-  

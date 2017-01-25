@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 var _keys = require('../../../babel-runtime/core-js/object/keys.js');
 
@@ -14,4 +13,3 @@ var $keys = require('./_object-keys-internal.js'),
 module.exports = _keys2.default || function keys(O) {
   return $keys(O, enumBugKeys);
 };
-  

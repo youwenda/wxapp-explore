@@ -1,5 +1,4 @@
-"use strict";var exports=module.exports={};
-  var global = window = {
+"use strict";var exports=module.exports={};var global = window = {
   Array: Array,
   Date: Date,
   Error: Error,
@@ -23,4 +22,3 @@ var isObject = require('./_is-object.js'),
 module.exports = function (it) {
   return is ? document.createElement(it) : {};
 };
-  

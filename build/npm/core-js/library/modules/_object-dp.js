@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 var _defineProperty = require('../../../babel-runtime/core-js/object/define-property.js');
 
@@ -23,4 +22,3 @@ exports.f = require('./_descriptors.js') ? _defineProperty2.default : function d
   if ('value' in Attributes) O[P] = Attributes.value;
   return O;
 };
-  

@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 var _from = require('../../../babel-runtime/core-js/array/from.js');
 
@@ -48,4 +47,3 @@ $export($export.S + $export.F * !require('./_iter-detect.js')(function (iter) {
     return result;
   }
 });
-  

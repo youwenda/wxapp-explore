@@ -1,5 +1,4 @@
-"use strict";var exports=module.exports={};
-  var global = window = {
+"use strict";var exports=module.exports={};var global = window = {
   Array: Array,
   Date: Date,
   Error: Error,
@@ -24,4 +23,3 @@ module.exports = function (name) {
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
   if (name.charAt(0) != '_' && !(name in $Symbol)) defineProperty($Symbol, name, { value: wksExt.f(name) });
 };
-  

@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 var $at = require('./_string-at.js')(true);
 
@@ -17,4 +16,3 @@ require('./_iter-define.js')(String, 'String', function (iterated) {
   this._i += point.length;
   return { value: point, done: false };
 });
-  

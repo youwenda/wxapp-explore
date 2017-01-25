@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 var _create = require('../../../babel-runtime/core-js/object/create.js');
 
@@ -49,4 +48,3 @@ module.exports = _create2.default || function create(O, Properties) {
   } else result = _createDict();
   return Properties === undefined ? result : dPs(result, Properties);
 };
-  

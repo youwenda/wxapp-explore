@@ -1,5 +1,4 @@
-"use strict";var exports=module.exports={};
-  var global = window = {
+"use strict";var exports=module.exports={};var global = window = {
   Array: Array,
   Date: Date,
   Error: Error,
@@ -43,4 +42,3 @@ var getWindowNames = function getWindowNames(it) {
 module.exports.f = function getOwnPropertyNames(it) {
   return windowNames && toString.call(it) == '[object Window]' ? getWindowNames(it) : gOPN(toIObject(it));
 };
-  

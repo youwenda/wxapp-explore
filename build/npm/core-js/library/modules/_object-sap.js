@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 // most Object methods by ES6 should accept primitives
 var $export = require('./_export.js'),
@@ -13,4 +12,3 @@ module.exports = function (KEY, exec) {
     fn(1);
   }), 'Object', exp);
 };
-  

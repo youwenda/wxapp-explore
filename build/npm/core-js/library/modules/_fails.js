@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 module.exports = function (exec) {
   try {
@@ -8,4 +7,3 @@ module.exports = function (exec) {
     return true;
   }
 };
-  

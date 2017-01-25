@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 // 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
 var toIObject = require('./_to-iobject.js'),
@@ -10,4 +9,3 @@ require('./_object-sap.js')('getOwnPropertyDescriptor', function () {
     return $getOwnPropertyDescriptor(toIObject(it), key);
   };
 });
-  

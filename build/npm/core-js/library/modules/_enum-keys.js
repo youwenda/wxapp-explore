@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 // all enumerable object keys, includes symbols
 var getKeys = require('./_object-keys.js'),
@@ -18,4 +17,3 @@ module.exports = function (it) {
     }
   }return result;
 };
-  

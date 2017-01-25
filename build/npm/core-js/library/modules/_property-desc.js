@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 module.exports = function (bitmap, value) {
   return {
@@ -9,4 +8,3 @@ module.exports = function (bitmap, value) {
     value: value
   };
 };
-  

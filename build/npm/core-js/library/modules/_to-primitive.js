@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
 var isObject = require('./_is-object.js');
@@ -13,4 +12,3 @@ module.exports = function (it, S) {
   if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
   throw TypeError("Can't convert object to primitive value");
 };
-  

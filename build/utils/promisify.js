@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -38,4 +37,3 @@ function promisify(fn) {
     });
   };
 }
-  

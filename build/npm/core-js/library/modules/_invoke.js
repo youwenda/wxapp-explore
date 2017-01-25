@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 // fast apply, http://jsperf.lnkit.com/fast-apply/5
 module.exports = function (fn, args, that) {
@@ -17,4 +16,3 @@ module.exports = function (fn, args, that) {
                                                       return un ? fn(args[0], args[1], args[2], args[3]) : fn.call(that, args[0], args[1], args[2], args[3]);
                   }return fn.apply(that, args);
 };
-  

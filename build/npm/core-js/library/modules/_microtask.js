@@ -1,5 +1,4 @@
-"use strict";var exports=module.exports={};
-  var process={};var global = window = {
+"use strict";var exports=module.exports={};var process={};var global = window = {
   Array: Array,
   Date: Date,
   Error: Error,
@@ -82,4 +81,3 @@ module.exports = function () {
     }last = task;
   };
 };
-  

@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 var addToUnscopables = require('./_add-to-unscopables.js'),
     step = require('./_iter-step.js'),
@@ -34,4 +33,3 @@ Iterators.Arguments = Iterators.Array;
 addToUnscopables('keys');
 addToUnscopables('values');
 addToUnscopables('entries');
-  

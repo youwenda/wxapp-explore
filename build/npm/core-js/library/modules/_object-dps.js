@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 var _defineProperties = require('../../../babel-runtime/core-js/object/define-properties.js');
 
@@ -21,4 +20,3 @@ module.exports = require('./_descriptors.js') ? _defineProperties2.default : fun
     dP.f(O, P = keys[i++], Properties[P]);
   }return O;
 };
-  

@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 var has = require('./_has.js'),
     toIObject = require('./_to-iobject.js'),
@@ -20,4 +19,3 @@ module.exports = function (object, names) {
     }
   }return result;
 };
-  

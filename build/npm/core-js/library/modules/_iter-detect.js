@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 var _from = require('../../../babel-runtime/core-js/array/from.js');
 
@@ -36,4 +35,3 @@ module.exports = function (exec, skipClosing) {
   } catch (e) {/* empty */}
   return safe;
 };
-  

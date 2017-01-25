@@ -1,5 +1,4 @@
 "use strict";var exports=module.exports={};
-  
 
 // 19.1.2.9 Object.getPrototypeOf(O)
 var toObject = require('./_to-object.js'),
@@ -10,4 +9,3 @@ require('./_object-sap.js')('getPrototypeOf', function () {
     return $getPrototypeOf(toObject(it));
   };
 });
-  
