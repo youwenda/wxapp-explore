@@ -1,4 +1,4 @@
-import promisify from './utils/promisify';
+import wx from './utils/weex';
 
 App({
   onLaunch() {
@@ -8,8 +8,9 @@ App({
     if (this.data.userInfo) {
       return Promise.resolve(this.data.userInfo);
     }
-    return promisify(wx.login)()
-    .then(() => promisify(wx.getUserInfo)())
+
+    return wx.login()
+    .then(() => wx.getUserInfo())
     .then((data) => {
       this.data.userInfo = data.userInfo;
       return Promise.resolve(this.data.userInfo);

@@ -1,6 +1,7 @@
 // index.js
 // 获取应用实例
-const app = getApp();
+import wx from '../../utils/weex';
+
 Page({
   data: {
     motto: 'Hello World',
@@ -8,7 +9,7 @@ Page({
   },
   onLoad() {
     // 调用应用实例的方法获取全局数据
-    return app.getUserInfo()
+    return wx.app.getUserInfo()
     .then((userInfo) => {
       console.log('getUserInfo Promise', userInfo);
       this.setData({

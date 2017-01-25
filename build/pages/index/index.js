@@ -1,9 +1,12 @@
 "use strict";var exports=module.exports={};
 
 
-// index.js
-// 获取应用实例
-var app = getApp();
+var _weex = require('../../utils/weex.js');
+
+var _weex2 = _interopRequireDefault(_weex);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 Page({
   data: {
     motto: 'Hello World',
@@ -13,7 +16,7 @@ Page({
     var _this = this;
 
     // 调用应用实例的方法获取全局数据
-    return app.getUserInfo().then(function (userInfo) {
+    return _weex2.default.app.getUserInfo().then(function (userInfo) {
       console.log('getUserInfo Promise', userInfo);
       _this.setData({
         userInfo: userInfo
@@ -22,4 +25,5 @@ Page({
       console.log(reason);
     });
   }
-});
+}); // index.js
+// 获取应用实例

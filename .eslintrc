@@ -5,9 +5,7 @@
   ],
   "globals": {
     "App": true,
-    "Page": true,
-    "getApp": true,
-    "wx": true
+    "Page": true
   },
   "rules": {
     "comma-dangle": ["error", "never"]
