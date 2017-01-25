@@ -12,7 +12,7 @@ var _promisify2 = _interopRequireDefault(_promisify);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 App({
-  onLauch: function onLauch() {
+  onLaunch: function onLaunch() {
     console.log('onLauch');
   },
   getUserInfo: function getUserInfo() {

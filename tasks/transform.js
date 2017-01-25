@@ -41,10 +41,7 @@ module.exports = function transform(from, to, targets = {}) {
 
   let code = fs.readFileSync(from.file, 'utf8');
   if (!utils.shouldBabelIgnore(from.relative)) {
-    code = babel.transform(code, Object.assign({}, utils.getBabelConfig(), {
-      sourceMaps: true,
-      sourceFileName: from.base
-    })).code;
+    code = babel.transform(code, Object.assign({}, utils.getBabelConfig())).code;
   }
   code = code.replace(/(?:(['"])use strict\1\s*;)/g, EMPTY);
   // 如果代码中引用了global或window 则加载'labrador/global'尝试兼容

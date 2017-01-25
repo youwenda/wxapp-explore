@@ -1,7 +1,7 @@
 import promisify from './utils/promisify';
 
 App({
-  onLauch() {
+  onLaunch() {
     console.log('onLauch');
   },
   getUserInfo() {
