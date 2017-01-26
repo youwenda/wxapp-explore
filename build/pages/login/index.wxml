@@ -1,0 +1,36 @@
+<view class="weui-flex flex-column justify-center items-center content-center">
+  <view class="weui-flex__item">
+    <view class="weui-flex flex-column justify-center items-center ">
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <text class="userinfo-nickname mt5">{{userInfo.nickName}}</text>
+    </view>
+  </view>
+  <view class="weui-flex__item">
+    <view class="weui-cells__title">请填写登录信息</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+                <view class="weui-label">手机号</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" type="number" placeholder="请输入手机号"/>
+            </view>
+        </view>
+        <view class="weui-cell weui-cell_input weui-cell_vcode">
+            <view class="weui-cell__hd">
+                <view class="weui-label">验证码</view>
+            </view>
+            <view class="weui-cell__bd">
+                <input class="weui-input" type="number" placeholder="请输入验证码" />
+            </view>
+            <view class="weui-cell__ft">
+                <view class="weui-vcode-btn">获取验证码</view>
+            </view>
+        </view>
+    </view>
+    <view class="weui-cells__tips">底部说明文字底部说明文字</view>
+  </view>
+  <view class="weui-flex__item pl30 pr30 pt30 self-stretch">
+    <button class="weui-btn" type="primary">登录</button>
+  </view>
+</view>

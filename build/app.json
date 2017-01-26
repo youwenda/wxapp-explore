@@ -1,11 +1,17 @@
 {
   "pages":[
-    "pages/index/index"
+    "pages/login/index"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
+  "window": {
+    "navigationBarTextStyle": "black",
     "navigationBarTitleText": "医患和",
-    "navigationBarTextStyle":"black"
+    "navigationBarBackgroundColor": "#f8f8f8",
+    "backgroundColor": "#f8f8f8"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
   }
 }
