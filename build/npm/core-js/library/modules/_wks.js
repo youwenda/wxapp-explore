@@ -1,19 +1,5 @@
 "use strict";var exports=module.exports={};
-var global = window = {
-  Array: Array,
-  Date: Date,
-  Error: Error,
-  Function: Function,
-  Math: Math,
-  Object: Object,
-  RegExp: RegExp,
-  String: String,
-  TypeError: TypeError,
-  setTimeout: setTimeout,
-  clearTimeout: clearTimeout,
-  setInterval: setInterval,
-  clearInterval: clearInterval
-};var store      = require('./_shared.js')('wks')
+var store      = require('./_shared.js')('wks')
   , uid        = require('./_uid.js')
   , Symbol     = require('./_global.js').Symbol
   , USE_SYMBOL = typeof Symbol == 'function';

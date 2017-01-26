@@ -44,8 +44,8 @@ module.exports = function transform(from, to, targets = {}) {
     code = babel.transform(code, Object.assign({}, utils.getBabelConfig())).code;
   }
   code = code.replace(/(?:(['"])use strict\1\s*;)/g, EMPTY);
-  // 如果代码中引用了global或window 则加载'labrador/global'尝试兼容
-  if (/global|window/.test(code)) {
+  // 如果代码中引用了global或window，则使用变量window进行替换
+  if (/\b(?:global|window)\b/.test(code)) {
     code = `var global = window = ${window};${code}`;
   }
   if (/[^\w_]process\.\w/.test(code) && !/typeof process/.test(code)) {
