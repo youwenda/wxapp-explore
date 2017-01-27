@@ -6,13 +6,19 @@
 
 3、不能通过第三方NPM包来直接安装使用。
 
-4、官方API统一封装promise
+4、样式上不能使用级联样式，并且可以支持`import`语法的使用，因此使用less、sass这样的工具意义不大。
 
-> 综述：借鉴https://github.com/maichong/labrador-cli 的ES6 -> ES5方案，同时支持第三方NPM包使用，到此为止，接下来为保证源码限制，不在使用类似React、Vue这样的方式，使用其原始提供的API.
+> 综述：借鉴https://github.com/maichong/labrador-cli 的ES6 -> ES5方案，同时支持第三方NPM包使用，到此为止，接下来为保证源码大小的限制，不在使用类似React、Redux这样的方式，使用其原始提供的API.
 
-### 如何在微信小程序中使用ES6
+### 如何开发
 
 ```
 npm install
 gulp watch
 ```
+
+### 微信小程序开发工具使用
+
+1、新建项目，本地开发目录选择 `build` 目标目录
+
+2、手机预览时，请勾选 `上传代码样式自动补全`
