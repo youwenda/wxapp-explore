@@ -11,3 +11,10 @@
 page, .weui-flex {
   height: 100%;
 }
+
+.weui-icon-clear {
+  top: 50%;
+  margin-top: -15px;
+  right: -20rpx;
+}
+

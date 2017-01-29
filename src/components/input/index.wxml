@@ -1,0 +1,5 @@
+<template name="input">
+  <view>
+    <input type="{{type}}" value="{{value}}" placeholder="{{placeholder}}"></input>
+  </view>
+</template>

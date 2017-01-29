@@ -1,7 +1,7 @@
 /* import weui style */
-@import 'style/base.wxss';
-@import 'style/flexbox.wxss';
-@import 'style/weui.wxss';
+@import './assets/styles/base.wxss';
+@import './assets/styles/flexbox.wxss';
+@import './assets/styles/weui.wxss';
 
 /**app.wxss**/
 .page__hd {
