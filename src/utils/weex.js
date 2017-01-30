@@ -55,4 +55,57 @@ Object.keys(wx).forEach((key) => {
   };
 });
 
+const strats = {};
+/**
+ * Data
+ */
+
+strats.data = function data(target, source) {
+  return Object.assign(target, source);
+};
+
+function mergeHook(target, source) {
+  if (typeof source === 'function') {
+    if (typeof target === 'function') {
+      return function mergedFuncion() {
+        source.call(this);
+        target.call(this);
+      };
+    }
+    return source;
+  }
+  return target;
+}
+
+['onLoad', 'onReady', 'onShow', 'onHide', 'onUnload']
+.forEach((hook) => {
+  strats[hook] = mergeHook;
+});
+
+/**
+ * Default strategy.
+ */
+function defaultStrat(target, source) {
+  return source === undefined
+    ? target
+    : source;
+}
+
+export function mergeOptions(target, ...args) {
+  const hasOwn = Object.prototype.hasOwnProperty;
+  if (target) {
+    args.forEach((source) => {
+      if (source) {
+        for (const key in source) {
+          if (hasOwn.call(source, key)) {
+            const strat = strats[key] || defaultStrat;
+            target[key] = strat(target[key], source[key], key);
+          }
+        }
+      }
+    });
+  }
+  return target;
+}
+
 export default weex;

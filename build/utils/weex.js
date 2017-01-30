@@ -17,6 +17,8 @@ var _keys = require('../npm/babel-runtime/core-js/object/keys.js');
 
 var _keys2 = _interopRequireDefault(_keys);
 
+exports.mergeOptions = mergeOptions;
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // 特别指定的wx对象中不进行Promise封装的方法
@@ -80,5 +82,59 @@ var weex = {
     });
   };
 });
+
+var strats = {};
+/**
+ * Data
+ */
+
+strats.data = function data(target, source) {
+  return (0, _assign2.default)(target, source);
+};
+
+function mergeHook(target, source) {
+  if (typeof source === 'function') {
+    if (typeof target === 'function') {
+      return function mergedFuncion() {
+        source.call(this);
+        target.call(this);
+      };
+    }
+    return source;
+  }
+  return target;
+}
+
+['onLoad', 'onReady', 'onShow', 'onHide', 'onUnload'].forEach(function (hook) {
+  strats[hook] = mergeHook;
+});
+
+/**
+ * Default strategy.
+ */
+function defaultStrat(target, source) {
+  return source === undefined ? target : source;
+}
+
+function mergeOptions(target) {
+  var hasOwn = Object.prototype.hasOwnProperty;
+  if (target) {
+    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    args.forEach(function (source) {
+      if (source) {
+        for (var key in source) {
+          if (hasOwn.call(source, key)) {
+            var strat = strats[key] || defaultStrat;
+            target[key] = strat(target[key], source[key], key);
+          }
+        }
+      }
+    });
+  }
+  return target;
+}
 
 exports.default = weex;

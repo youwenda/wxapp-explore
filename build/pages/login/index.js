@@ -9,33 +9,25 @@ var _index = require('../../components/validation/index.js');
 
 var _index2 = _interopRequireDefault(_index);
 
+var _index3 = require('../../components/input/index.js');
+
+var _index4 = _interopRequireDefault(_index3);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// index.js
+var EMPTY = ''; // index.js
 // 获取应用实例
-var EMPTY = '';
 
-Page({
+var options = (0, _weex.mergeOptions)({
   data: {
     phone: EMPTY,
     vcode: EMPTY,
-    inputVal: EMPTY,
     userInfo: {}
-  },
-  clearInput: function clearInput() {
-    console.log('clearInput');
-    this.setData({
-      inputVal: EMPTY
-    });
-  },
-  inputTyping: function inputTyping(e) {
-    this.setData({
-      inputVal: e.detail.value
-    });
   },
   onLoad: function onLoad() {
     var _this = this;
 
+    console.log('login onLoad');
     this.valid = new _index2.default({
       phone: {
         required: [true, '请输入手机号码'],
@@ -56,17 +48,19 @@ Page({
       console.log(reason);
     });
   },
-  bindfocus: function bindfocus(event) {
-    console.log('bindfocus', event);
+  onReady: function onReady() {
+    console.log('login onReady');
   },
   formSubmit: function formSubmit(event) {
-    console.log('formSubmit', event);
-    console.log(this.valid.isValid(event), this.valid.errors);
-    var error = this.valid.errors[0];
-    _weex2.default.showModal({
-      title: '友情提示',
-      content: '' + error.msg,
-      showCancel: !1
-    });
+    if (!this.valid.isValid(event)) {
+      var error = this.valid.errors[0];
+      _weex2.default.showModal({
+        title: '友情提示',
+        content: '' + error.msg,
+        showCancel: !1
+      });
+    }
   }
-});
+}, _index4.default);
+
+Page(options);

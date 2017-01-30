@@ -1,29 +1,18 @@
 // index.js
 // 获取应用实例
-import wx from '../../utils/weex';
+import wx, { mergeOptions } from '../../utils/weex';
 import Validation from '../../components/validation/index';
+import Input from '../../components/input/index';
 
 const EMPTY = '';
-
-Page({
+const options = mergeOptions({
   data: {
     phone: EMPTY,
     vcode: EMPTY,
-    inputVal: EMPTY,    
     userInfo: {}
   },
-  clearInput() {
-    console.log('clearInput');
-    this.setData({
-      inputVal: EMPTY
-    });
-  },
-  inputTyping(e) {
-    this.setData({
-      inputVal: e.detail.value
-    });
-  },
   onLoad() {
+    console.log('login onLoad');
     this.valid = new Validation({
       phone: {
         required: [true, '请输入手机号码'],
@@ -46,17 +35,19 @@ Page({
       console.log(reason);
     });
   },
-  bindfocus(event) {
-    console.log('bindfocus', event);
+  onReady() {
+    console.log('login onReady');
   },
   formSubmit(event) {
-    console.log('formSubmit', event);
-    console.log(this.valid.isValid(event), this.valid.errors);
-    const error = this.valid.errors[0];
-    wx.showModal({
-      title: '友情提示',
-      content: `${error.msg}`,
-      showCancel: !1
-    });
+    if (!this.valid.isValid(event)) {
+      const error = this.valid.errors[0];
+      wx.showModal({
+        title: '友情提示',
+        content: `${error.msg}`,
+        showCancel: !1
+      });
+    }
   }
-});
+}, Input);
+
+Page(options);

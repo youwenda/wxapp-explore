@@ -1,5 +1,9 @@
+<!--Props name type placeholder-->
 <template name="input">
-  <view>
-    <input type="{{type}}" value="{{value}}" placeholder="{{placeholder}}"></input>
+  <view class="weui-cell__bd pr">
+    <input name="{{name}}" class="weui-input" type="{{type}}" placeholder="{{placeholder}}" value="{{value}}" bindinput="inputTyping" />
+    <view class="weui-icon-clear" wx:if="{{value.length > 0}}" bindtap="clearInput">
+        <icon type="clear" size="16"></icon>
+    </view>
   </view>
 </template>

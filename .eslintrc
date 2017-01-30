@@ -9,7 +9,6 @@
   },
   "rules": {
     "comma-dangle": ["error", "never"],
-    "no-console": 0,
-    "no-restricted-syntax": ["error", "ForInStatement"] 
+    "no-console": 0
   }
 }
