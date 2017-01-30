@@ -1,0 +1,11 @@
+<swiper indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
+  <block wx:for="{{images}}" wx:key="{{index}}">
+    <swiper-item>
+      <image src="{{item}}" class="swiper-image" />
+    </swiper-item>
+  </block>
+  <view class="weui-flex__item" wx:if="{{last}}">
+    <button class="weui-btn" type="primary">进入小程序</button>
+  </view>
+</swiper>

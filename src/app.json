@@ -1,5 +1,6 @@
 {
   "pages":[
+    "pages/guider/index",
     "pages/login/index"
   ],
   "window": {

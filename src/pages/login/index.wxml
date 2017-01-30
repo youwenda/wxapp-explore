@@ -1,3 +1,5 @@
+<import src="../../components/input/index.wxml" />
+
 <form class="weui-flex" bindsubmit="formSubmit">
 <view class="weui-flex flex-column justify-center items-center content-center">
   <view class="weui-flex__item">
@@ -13,12 +15,7 @@
               <view class="weui-cell__hd">
                   <view class="weui-label">手机号</view>
               </view>
-              <view class="weui-cell__bd pr">
-                  <input name="phone" class="weui-input" type="number" placeholder="输入手机号" value="{{value}}" bindinput="inputTyping" />
-                  <view class="weui-icon-clear" wx:if="{{value.length > 0}}" bindtap="clearInput">
-                      <icon type="clear" size="16"></icon>
-                  </view>
-              </view>
+              <template is="input" data="{{name:'phone',type:'number',placeholder:'输入手机号'}}"/>
           </view>
           <view class="weui-cell weui-cell_input weui-cell_vcode">
               <view class="weui-cell__hd">
