@@ -20,8 +20,6 @@ var EMPTY = ''; // index.js
 
 var options = (0, _weex.mergeOptions)({
   data: {
-    phone: EMPTY,
-    vcode: EMPTY,
     userInfo: {}
   },
   onLoad: function onLoad() {

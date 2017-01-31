@@ -50,11 +50,12 @@ class Service {
       if (CACHED[key]) {
         return resolve(CACHED[key]);
       }
-      // TODO Listen on
+      // Listen ON Event
       Event.on(key, (res) => {
         if (res.err) {
           return reject(res.err);
         }
+        CACHED[key] = res.data;
         return resolve(res.data);
       });
 
@@ -94,7 +95,7 @@ class Service {
       }
     });
   }
-  static request(options = {}) {
+  request(options = {}) {
     if (!options.url) {
       throw new Error('wx.request方法需要参数url，详情请见https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-request.html#wxrequestobject');
     }
@@ -112,6 +113,9 @@ class Service {
         });
         return wx.request(options)
         .then((res) => {
+          if (this.destroyed) {
+            return reject('Service Instance has destroyed');
+          }
           if (res.code === CODE.success) {
             const data = res.result || res.data;
             const msg = res.msg || res.message;
@@ -119,13 +123,14 @@ class Service {
               data.msg = msg;
             }
             return resolve(new Model(data));
-          } else if (res.code === CODE.login) {
+          }
+          if (res.code === CODE.login) {
             wx.redirectTo({
               url: '/pages/login/index'
             });
             return reject(res.msg || 'Need Login');
           }
-          reject(res.msg || '接口错误');
+          return reject(res.msg || '接口错误');
         })
         .catch((err) => {
           reject(err);

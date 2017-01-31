@@ -7,8 +7,6 @@ import Input from '../../components/input/index';
 const EMPTY = '';
 const options = mergeOptions({
   data: {
-    phone: EMPTY,
-    vcode: EMPTY,
     userInfo: {}
   },
   onLoad() {

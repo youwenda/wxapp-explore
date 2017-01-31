@@ -5,13 +5,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _assign = require('../npm/babel-runtime/core-js/object/assign.js');
-
-var _assign2 = _interopRequireDefault(_assign);
-
 var _promise = require('../npm/babel-runtime/core-js/promise.js');
 
 var _promise2 = _interopRequireDefault(_promise);
+
+var _assign = require('../npm/babel-runtime/core-js/object/assign.js');
+
+var _assign2 = _interopRequireDefault(_assign);
 
 var _classCallCheck2 = require('../npm/babel-runtime/helpers/classCallCheck.js');
 
@@ -58,7 +58,74 @@ var Service = function () {
     this.destroyed = 0;
   }
 
-  (0, _createClass3.default)(Service, null, [{
+  (0, _createClass3.default)(Service, [{
+    key: 'request',
+    value: function request() {
+      var _this = this;
+
+      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      if (!options.url) {
+        throw new Error('wx.request方法需要参数url，详情请见https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-request.html#wxrequestobject');
+      }
+      (0, _assign2.default)(options, {
+        url: Service.adapterUrl(options.url)
+      });
+      return new _promise2.default(function (resolve, reject) {
+        Service.getCached({
+          fn: _weex2.default.app.getSession,
+          context: _weex2.default.app
+        }).then(function (session) {
+          (0, _assign2.default)(options.data || {}, {
+            session: session
+          });
+          return _weex2.default.request(options).then(function (res) {
+            if (_this.destroyed) {
+              return reject('Service Instance has destroyed');
+            }
+            if (res.code === CODE.success) {
+              var data = res.result || res.data;
+              var msg = res.msg || res.message;
+              if (msg && msg.length) {
+                data.msg = msg;
+              }
+              return resolve(new _model2.default(data));
+            }
+            if (res.code === CODE.login) {
+              _weex2.default.redirectTo({
+                url: '/pages/login/index'
+              });
+              return reject(res.msg || 'Need Login');
+            }
+            return reject(res.msg || '接口错误');
+          }).catch(function (err) {
+            reject(err);
+          });
+        }).catch(function () {
+          // 没有session直接跳转到登录页面
+          _weex2.default.redirectTo({
+            url: '/pages/login/index'
+          });
+          return reject('Need Login');
+          // Service.getCached({
+          //   fn: wx.login,
+          //   context: wx
+          // })
+          // .then((res) => {
+          //   return wx.request({
+          //     url: ,
+          //     data: {
+          //       code: res.code
+          //     }
+          //   })
+          // })
+          // .catch(() => {
+          //   // TODO 跳转到登录授权页面
+          // });
+        });
+      });
+    }
+  }], [{
     key: 'adapterUrl',
     value: function adapterUrl(url) {
       /* eslint no-param-reassign: 0 */
@@ -93,11 +160,12 @@ var Service = function () {
         if (CACHED[key]) {
           return resolve(CACHED[key]);
         }
-        // TODO Listen on
+        // Listen ON Event
         _event2.default.on(key, function (res) {
           if (res.err) {
             return reject(res.err);
           }
+          CACHED[key] = res.data;
           return resolve(res.data);
         });
 
@@ -131,67 +199,6 @@ var Service = function () {
             });
           }
         }
-      });
-    }
-  }, {
-    key: 'request',
-    value: function request() {
-      var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-
-      if (!options.url) {
-        throw new Error('wx.request方法需要参数url，详情请见https://mp.weixin.qq.com/debug/wxadoc/dev/api/network-request.html#wxrequestobject');
-      }
-      (0, _assign2.default)(options, {
-        url: Service.adapterUrl(options.url)
-      });
-      return new _promise2.default(function (resolve, reject) {
-        Service.getCached({
-          fn: _weex2.default.app.getSession,
-          context: _weex2.default.app
-        }).then(function (session) {
-          (0, _assign2.default)(options.data || {}, {
-            session: session
-          });
-          return _weex2.default.request(options).then(function (res) {
-            if (res.code === CODE.success) {
-              var data = res.result || res.data;
-              var msg = res.msg || res.message;
-              if (msg && msg.length) {
-                data.msg = msg;
-              }
-              return resolve(new _model2.default(data));
-            } else if (res.code === CODE.login) {
-              _weex2.default.redirectTo({
-                url: '/pages/login/index'
-              });
-              return reject(res.msg || 'Need Login');
-            }
-            reject(res.msg || '接口错误');
-          }).catch(function (err) {
-            reject(err);
-          });
-        }).catch(function () {
-          // 没有session直接跳转到登录页面
-          _weex2.default.redirectTo({
-            url: '/pages/login/index'
-          });
-          return reject('Need Login');
-          // Service.getCached({
-          //   fn: wx.login,
-          //   context: wx
-          // })
-          // .then((res) => {
-          //   return wx.request({
-          //     url: ,
-          //     data: {
-          //       code: res.code
-          //     }
-          //   })
-          // })
-          // .catch(() => {
-          //   // TODO 跳转到登录授权页面
-          // });
-        });
       });
     }
   }]);
