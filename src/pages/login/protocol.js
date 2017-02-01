@@ -3,23 +3,23 @@ import Validation from '../../components/validation/index';
 
 Page({
   data: {
-    radioItems: [{
+    roleItems: [{
       name: '患者',
-      value: 0,
+      value: 'patient',
       desc: '我是患者',
       icon: '../../assets/images/patient.png',
       checked: true
     }, {
       name: '医生',
-      value: 1,
+      value: 'doctor',
       desc: '我是医生',
       icon: '../../assets/images/doctor.png'
     }]
   },
   onLoad() {
-    this.radioMap = {};
-    this.data.radioItems.forEach((v) => {
-      this.radioMap[v.value] = v;
+    this.roleMap = {};
+    this.data.roleItems.forEach((v) => {
+      this.roleMap[v.value] = v;
     });
     this.valid = new Validation({
       agree: {
@@ -28,13 +28,12 @@ Page({
     });
   },
   radioChange (e) {
-    console.log('radio发生change事件，携带value值为：', e.detail.value);
-    const radioItems = this.data.radioItems;
-    for (let i = 0, len = radioItems.length; i < len; i++) {
-      radioItems[i].checked = radioItems[i].value == e.detail.value;
+    const roleItems = this.data.roleItems;
+    for (let i = 0, len = roleItems.length; i < len; i++) {
+      roleItems[i].checked = roleItems[i].value == e.detail.value;
     }
     this.setData({
-      radioItems
+      roleItems
     });
   },
   bindAgreeChange(e) {
@@ -53,7 +52,7 @@ Page({
     }
     wx.showModal({
       title: '友情提示',
-      content: `您当前选择的是注册角色是${this.radioMap[e.detail.value.role].name}`
+      content: `您当前选择的是注册角色是${this.roleMap[e.detail.value.role].name}`
     })
     .then((res) => {
       if (res.confirm) {
@@ -62,7 +61,7 @@ Page({
           icon: 'loading'
         });
         wx.navigateTo({
-          url: '/pages/index/profile'
+          url: '/pages/profile'
         });
       }
     });

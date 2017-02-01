@@ -13,15 +13,15 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 Page({
   data: {
-    radioItems: [{
+    roleItems: [{
       name: '患者',
-      value: 0,
+      value: 'patient',
       desc: '我是患者',
       icon: '../../assets/images/patient.png',
       checked: true
     }, {
       name: '医生',
-      value: 1,
+      value: 'doctor',
       desc: '我是医生',
       icon: '../../assets/images/doctor.png'
     }]
@@ -29,9 +29,9 @@ Page({
   onLoad: function onLoad() {
     var _this = this;
 
-    this.radioMap = {};
-    this.data.radioItems.forEach(function (v) {
-      _this.radioMap[v.value] = v;
+    this.roleMap = {};
+    this.data.roleItems.forEach(function (v) {
+      _this.roleMap[v.value] = v;
     });
     this.valid = new _index2.default({
       agree: {
@@ -40,13 +40,12 @@ Page({
     });
   },
   radioChange: function radioChange(e) {
-    console.log('radio发生change事件，携带value值为：', e.detail.value);
-    var radioItems = this.data.radioItems;
-    for (var i = 0, len = radioItems.length; i < len; i++) {
-      radioItems[i].checked = radioItems[i].value == e.detail.value;
+    var roleItems = this.data.roleItems;
+    for (var i = 0, len = roleItems.length; i < len; i++) {
+      roleItems[i].checked = roleItems[i].value == e.detail.value;
     }
     this.setData({
-      radioItems: radioItems
+      roleItems: roleItems
     });
   },
   bindAgreeChange: function bindAgreeChange(e) {
@@ -65,7 +64,7 @@ Page({
     }
     _weex2.default.showModal({
       title: '友情提示',
-      content: '\u60A8\u5F53\u524D\u9009\u62E9\u7684\u662F\u6CE8\u518C\u89D2\u8272\u662F' + this.radioMap[e.detail.value.role].name
+      content: '\u60A8\u5F53\u524D\u9009\u62E9\u7684\u662F\u6CE8\u518C\u89D2\u8272\u662F' + this.roleMap[e.detail.value.role].name
     }).then(function (res) {
       if (res.confirm) {
         _weex2.default.showToast({
@@ -73,7 +72,7 @@ Page({
           icon: 'loading'
         });
         _weex2.default.navigateTo({
-          url: '/pages/index/profile'
+          url: '/pages/profile'
         });
       }
     });
