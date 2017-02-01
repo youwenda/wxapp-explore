@@ -22,7 +22,7 @@ Page({
           'https://gw.alicdn.com/tps/i4/T13aBkFJFaXXcbqQZo-320-480.png'
         ]
       });
-      setTimeout(() => wx.hideToast(), 3e2);    
+      setTimeout(() => wx.hideToast(), 3e2);
     } else {
       // request EnvUserInfo
       new Service()
@@ -30,6 +30,7 @@ Page({
         url: '/api/getUserInfo'
       })
       .then(() => {
+        // 跳转到个人主页
       })
       .catch((reason) => {
         console.log(reason);

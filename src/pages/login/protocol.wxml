@@ -1,0 +1,37 @@
+<view class="page__hd">
+  <view class="page__title">认证身份、协议</view>
+  <view class="page__desc">通过选择不同的身份，您将处于不同的角色</view>
+</view>
+<form bindsubmit="formSubmit" class="page__bd">
+  <view class="weui-cells__title">选择不同的注册身份</view>
+  <view class="weui-cells weui-cells_after-title">
+      <radio-group name="role" bindchange="radioChange">
+          <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="{{item.value}}">
+              <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+              <view class="weui-cell__bd weui-flex flex-row">
+                <image src="{{item.icon}}"></image>
+                <text class="pl30" >{{item.name}}</text>
+              </view>
+              <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                  <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+              </view>
+          </label>
+      </radio-group>
+  </view>
+
+  <checkbox-group name="agree" bindchange="bindAgreeChange">
+      <label class="weui-agree" for="weuiAgree">
+          <view class="weui-agree__text">
+              <checkbox class="weui-agree__checkbox" id="weuiAgree" value="agree" checked="{{isAgree}}" />
+              <view class="weui-agree__checkbox-icon">
+                  <icon class="weui-agree__checkbox-icon-check" type="success_no_circle" size="10" wx:if="{{isAgree}}"></icon>
+              </view>
+              阅读并同意 <navigator url="" class="weui-agree__link">《相关条款》</navigator>
+          </view>
+      </label>
+  </checkbox-group>
+
+  <view class="weui-btn-area">
+      <button formType="submit" class="weui-btn" type="primary">确定</button>
+  </view>
+</form>

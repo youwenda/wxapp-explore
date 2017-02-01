@@ -5,6 +5,10 @@ var _weex = require('../../utils/weex.js');
 
 var _weex2 = _interopRequireDefault(_weex);
 
+var _service = require('../../utils/service.js');
+
+var _service2 = _interopRequireDefault(_service);
+
 var _index = require('../../components/validation/index.js');
 
 var _index2 = _interopRequireDefault(_index);
@@ -15,9 +19,9 @@ var _index4 = _interopRequireDefault(_index3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var EMPTY = ''; // index.js
+// index.js
 // 获取应用实例
-
+var EMPTY = '';
 var options = (0, _weex.mergeOptions)({
   data: {
     userInfo: {}
@@ -32,8 +36,7 @@ var options = (0, _weex.mergeOptions)({
         mobile: true
       },
       vcode: {
-        required: [true, '请输入验证码'],
-        regex: /\d{4,5}/
+        required: [true, '请输入验证码']
       }
     });
     // 调用应用实例的方法获取全局数据
@@ -49,15 +52,38 @@ var options = (0, _weex.mergeOptions)({
   onReady: function onReady() {
     console.log('login onReady');
   },
+  onUnload: function onUnload() {
+    this.valid = null;
+  },
   formSubmit: function formSubmit(event) {
     if (!this.valid.isValid(event)) {
       var error = this.valid.errors[0];
-      _weex2.default.showModal({
+      return _weex2.default.showModal({
         title: '友情提示',
         content: '' + error.msg,
-        showCancel: !1
+        showCancel: false
       });
     }
+    _weex2.default.showToast({
+      title: '加载中',
+      icon: 'loading'
+    });
+    _weex2.default.request({
+      url: _service2.default.adapterUrl('/api/login'),
+      data: {
+        phone: event.detail.value.phone,
+        vcode: event.detail.value.vcode
+      },
+      method: 'POST'
+    }).then(function () {
+      // 设置Session，页面跳转到协议页面
+    }).catch(function (err) {
+      _weex2.default.showModal({
+        title: '友情提示',
+        content: '\u767B\u5F55\u5931\u8D25\uFF0C\u9519\u8BEF\u539F\u56E0\uFF1A' + err,
+        showCancel: false
+      });
+    });
   }
 }, _index4.default);
 

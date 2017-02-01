@@ -24,7 +24,7 @@ Page({
       title: '加载中',
       icon: 'loading'
     });
-    if (!_weex2.default.app.data.session && 0) {
+    if (!_weex2.default.app.data.session) {
       this.setData({
         images: ['https://gw.alicdn.com/tps/i2/T1eppkFThaXXcbqQZo-320-480.png', 'https://gw.alicdn.com/tps/i3/T1unFhFFxdXXcbqQZo-320-480.png', 'https://gw.alicdn.com/tps/i4/T13aBkFJFaXXcbqQZo-320-480.png']
       });
@@ -35,7 +35,9 @@ Page({
       // request EnvUserInfo
       new _service2.default().request({
         url: '/api/getUserInfo'
-      }).then(function () {}).catch(function (reason) {
+      }).then(function () {
+        // 跳转到个人主页
+      }).catch(function (reason) {
         console.log(reason);
       });
     }

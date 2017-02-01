@@ -1,6 +1,9 @@
 {
   "pages":[
+    "pages/login/protocol",
+    
     "pages/guider/index",
+
     "pages/login/index"
   ],
   "window": {

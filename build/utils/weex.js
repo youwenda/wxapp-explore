@@ -72,7 +72,7 @@ var weex = {
         },
         fail: function fail(err) {
           if (err && err.errMsg) {
-            reject(new Error(err.errMsg));
+            reject(err.errMsg);
           } else {
             reject(err);
           }
