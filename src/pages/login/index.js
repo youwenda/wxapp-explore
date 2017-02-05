@@ -50,7 +50,8 @@ const options = mergeOptions({
     }
     wx.showToast({
       title: '加载中',
-      icon: 'loading'
+      icon: 'loading',
+      duration: 10000
     });
     wx.request({
       url: Service.adapterUrl('/api/doctor/login'),
@@ -62,6 +63,7 @@ const options = mergeOptions({
       method: 'POST'
     })
     .then((data) => {
+      wx.hideToast();
       // 设置Session，页面跳转到协议页面
       /* eslint no-param-reassign:0 */
       data = data.data;
@@ -89,6 +91,7 @@ const options = mergeOptions({
       });
     })
     .catch((err) => {
+      wx.hideToast();
       wx.showModal({
         title: '友情提示',
         content: `登录失败，错误原因：${err}`,

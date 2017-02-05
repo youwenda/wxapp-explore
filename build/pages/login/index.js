@@ -80,7 +80,8 @@ var options = (0, _weex.mergeOptions)({
     }
     _weex2.default.showToast({
       title: '加载中',
-      icon: 'loading'
+      icon: 'loading',
+      duration: 10000
     });
     _weex2.default.request({
       url: _service2.default.adapterUrl('/api/doctor/login'),
@@ -91,6 +92,7 @@ var options = (0, _weex.mergeOptions)({
       },
       method: 'POST'
     }).then(function (data) {
+      _weex2.default.hideToast();
       // 设置Session，页面跳转到协议页面
       /* eslint no-param-reassign:0 */
       data = data.data;
@@ -116,6 +118,7 @@ var options = (0, _weex.mergeOptions)({
         });
       });
     }).catch(function (err) {
+      _weex2.default.hideToast();
       _weex2.default.showModal({
         title: '友情提示',
         content: '\u767B\u5F55\u5931\u8D25\uFF0C\u9519\u8BEF\u539F\u56E0\uFF1A' + err,
