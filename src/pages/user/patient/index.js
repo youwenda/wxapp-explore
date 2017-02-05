@@ -1,5 +1,8 @@
-import wx from '../../../utils/weex';
+import wx, { mergeOptions } from '../../../utils/weex';
+import Util from '../util';
 
-Page({
+const options = mergeOptions({
   data: {}
-})
+}, Util);
+
+Page(options);

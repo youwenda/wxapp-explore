@@ -79,7 +79,8 @@ Page({
         new _service2.default().request({
           url: '/api/common/setUserInfo',
           data: {
-            contact_name: role
+            key: 'contact_name',
+            value: role
           },
           method: 'POST'
         }).then(function () {

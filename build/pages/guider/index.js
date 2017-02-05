@@ -35,7 +35,7 @@ Page({
         // 跳转到个人主页
         var role = model.get('role');
         _weex2.default.redirectTo({
-          url: 'pages/user/' + _weex2.default.app.data.roleMap[role] + '/index'
+          url: '/pages/user/' + _weex2.default.app.data.roleMap[role] + '/index'
         });
       }).catch(function (reason) {
         console.log(reason);

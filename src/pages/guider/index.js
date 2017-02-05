@@ -26,7 +26,7 @@ Page({
         // 跳转到个人主页
         const role = model.get('role');
         wx.redirectTo({
-          url: `pages/user/${wx.app.data.roleMap[role]}/index`
+          url: `/pages/user/${wx.app.data.roleMap[role]}/index`
         });
       })
       .catch((reason) => {

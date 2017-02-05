@@ -80,7 +80,6 @@ var Service = function () {
             session: session
           });
           return _weex2.default.request(options).then(function (res) {
-            debugger;
             if (_this.destroyed) {
               return reject('Service Instance has destroyed');
             }

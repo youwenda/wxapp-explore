@@ -113,7 +113,6 @@ class Service {
         });
         return wx.request(options)
         .then((res) => {
-          debugger
           if (this.destroyed) {
             return reject('Service Instance has destroyed');
           }
