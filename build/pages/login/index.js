@@ -1,5 +1,19 @@
 "use strict";var exports=module.exports={};
-
+var global = window = {
+  Array: Array,
+  Date: Date,
+  Error: Error,
+  Function: Function,
+  Math: Math,
+  Object: Object,
+  RegExp: RegExp,
+  String: String,
+  TypeError: TypeError,
+  setTimeout: setTimeout,
+  clearTimeout: clearTimeout,
+  setInterval: setInterval,
+  clearInterval: clearInterval
+};
 
 var _weex = require('../../utils/weex.js');
 
@@ -69,14 +83,38 @@ var options = (0, _weex.mergeOptions)({
       icon: 'loading'
     });
     _weex2.default.request({
-      url: _service2.default.adapterUrl('/api/login'),
+      url: _service2.default.adapterUrl('/api/doctor/login'),
       data: {
-        phone: event.detail.value.phone,
+        contact_mobile: event.detail.value.phone,
         vcode: event.detail.value.vcode
+        // 暂时看不需要微信login code
       },
       method: 'POST'
-    }).then(function () {
+    }).then(function (data) {
       // 设置Session，页面跳转到协议页面
+      /* eslint no-param-reassign:0 */
+      data = data.data;
+      var session = data.result.session;
+      var role = _weex2.default.app.data.roleMap[data.result.role];
+      // 存储在App global Data中 以及在storage中
+      _weex2.default.app.data.session = session;
+      _weex2.default.setStorage({
+        key: 'session',
+        data: session
+      }).then(function () {
+        _weex2.default.showToast({
+          title: role ? '登陆成功' : '新用户注册成功',
+          icon: 'loading'
+        });
+        if (role) {
+          return _weex2.default.redirectTo({
+            url: '/pages/user/' + role + '/index'
+          });
+        }
+        return _weex2.default.redirectTo({
+          url: '/pages/login/protocol'
+        });
+      });
     }).catch(function (err) {
       _weex2.default.showModal({
         title: '友情提示',

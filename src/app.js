@@ -12,8 +12,8 @@ App({
         key: SESSION
       })
       .then((data) => {
-        if (data[SESSION] != null) {
-          this.data.session = data[SESSION];
+        if (data.data != null) {
+          this.data.session = data.data;
           resolve(this.data.session);
         } else {
           reject();
@@ -39,6 +39,10 @@ App({
   },
   data: {
     session: null,
-    userInfo: null
+    userInfo: null,
+    roleMap: {
+      1: 'patient',
+      2: 'doctor'
+    }
   }
 });

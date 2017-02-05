@@ -1,17 +1,18 @@
 import wx from '../../utils/weex';
 import Validation from '../../components/validation/index';
+import Service from '../../utils/service';
 
 Page({
   data: {
     roleItems: [{
       name: '患者',
-      value: 'patient',
+      value: wx.app.data.roleMap['1'],
       desc: '我是患者',
       icon: '../../assets/images/patient.png',
       checked: true
     }, {
-      name: '医生',
-      value: 'doctor',
+      name: '医护及辅助人员',
+      value: wx.app.data.roleMap['2'],
       desc: '我是医生',
       icon: '../../assets/images/doctor.png'
     }]
@@ -50,9 +51,10 @@ Page({
         showCancel: false
       });
     }
+    const role = e.detail.value.role;
     wx.showModal({
       title: '友情提示',
-      content: `您当前选择的是注册角色是${this.roleMap[e.detail.value.role].name}`
+      content: `您当前选择的是注册角色是${this.roleMap[role].name}`
     })
     .then((res) => {
       if (res.confirm) {
@@ -60,8 +62,25 @@ Page({
           title: '加载中',
           icon: 'loading'
         });
-        wx.navigateTo({
-          url: '/pages/profile'
+        new Service()
+        .request({
+          url: '/api/common/setUserInfo',
+          data: {
+            contact_name: role
+          },
+          method: 'POST'
+        })
+        .then(() => {
+          wx.navigateTo({
+            url: `/pages/user/${role}/index`
+          });
+        })
+        .catch((error) => {
+          wx.showModal({
+            title: '友情提示',
+            content: `${error.msg}`,
+            showCancel: false
+          });
         });
       }
     });

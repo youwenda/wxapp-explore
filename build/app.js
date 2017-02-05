@@ -24,8 +24,8 @@ App({
       _weex2.default.getStorage({
         key: SESSION
       }).then(function (data) {
-        if (data[SESSION] != null) {
-          _this.data.session = data[SESSION];
+        if (data.data != null) {
+          _this.data.session = data.data;
           resolve(_this.data.session);
         } else {
           reject();
@@ -55,6 +55,10 @@ App({
 
   data: {
     session: null,
-    userInfo: null
+    userInfo: null,
+    roleMap: {
+      1: 'patient',
+      2: 'doctor'
+    }
   }
 });

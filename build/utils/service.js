@@ -35,7 +35,7 @@ var _model2 = _interopRequireDefault(_model);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var HOST = 'https://healcloud.cn';
+var HOST = 'https://dinghuotuxiu.com';
 var HTTPS_REG = /^https?\/\//;
 var SUFFIX = '.json';
 var SUFFIX_REG = /\.json$/;
@@ -43,7 +43,7 @@ var EMPTY = '';
 var CACHED = {};
 var CODE = {
   success: 200,
-  login: 403,
+  login: 601,
   unfound: 404,
   networkerror: 0
 };
@@ -76,16 +76,18 @@ var Service = function () {
           fn: _weex2.default.app.getSession,
           context: _weex2.default.app
         }).then(function (session) {
-          (0, _assign2.default)(options.data || {}, {
+          options.data = (0, _assign2.default)(options.data || {}, {
             session: session
           });
           return _weex2.default.request(options).then(function (res) {
+            debugger;
             if (_this.destroyed) {
               return reject('Service Instance has destroyed');
             }
+            res = res.data;
             if (res.code === CODE.success) {
-              var data = res.result || res.data;
-              var msg = res.msg || res.message;
+              var data = res.result;
+              var msg = res.msg;
               if (msg && msg.length) {
                 data.msg = msg;
               }

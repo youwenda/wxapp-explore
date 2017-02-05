@@ -53,15 +53,40 @@ const options = mergeOptions({
       icon: 'loading'
     });
     wx.request({
-      url: Service.adapterUrl('/api/login'),
+      url: Service.adapterUrl('/api/doctor/login'),
       data: {
-        phone: event.detail.value.phone,
+        contact_mobile: event.detail.value.phone,
         vcode: event.detail.value.vcode
+        // 暂时看不需要微信login code
       },
       method: 'POST'
     })
-    .then(() => {
+    .then((data) => {
       // 设置Session，页面跳转到协议页面
+      /* eslint no-param-reassign:0 */
+      data = data.data;
+      const session = data.result.session;
+      const role = wx.app.data.roleMap[data.result.role];
+      // 存储在App global Data中 以及在storage中
+      wx.app.data.session = session;
+      wx.setStorage({
+        key: 'session',
+        data: session
+      })
+      .then(() => {
+        wx.showToast({
+          title: role ? '登陆成功' : '新用户注册成功',
+          icon: 'loading'
+        });
+        if (role) {
+          return wx.redirectTo({
+            url: `/pages/user/${role}/index`
+          });
+        }
+        return wx.redirectTo({
+          url: '/pages/login/protocol'
+        });
+      });
     })
     .catch((err) => {
       wx.showModal({

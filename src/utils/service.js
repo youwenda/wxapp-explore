@@ -2,7 +2,7 @@ import wx from './weex';
 import Event from './event';
 import Model from './model';
 
-const HOST = 'https://healcloud.cn';
+const HOST = 'https://dinghuotuxiu.com';
 const HTTPS_REG = /^https?\/\//;
 const SUFFIX = '.json';
 const SUFFIX_REG = /\.json$/;
@@ -10,7 +10,7 @@ const EMPTY = '';
 const CACHED = {};
 const CODE = {
   success: 200,
-  login: 403,
+  login: 601,
   unfound: 404,
   networkerror: 0
 };
@@ -108,17 +108,19 @@ class Service {
         context: wx.app
       })
       .then((session) => {
-        Object.assign(options.data || {}, {
+        options.data = Object.assign(options.data || {}, {
           session
         });
         return wx.request(options)
         .then((res) => {
+          debugger
           if (this.destroyed) {
             return reject('Service Instance has destroyed');
           }
+          res = res.data;
           if (res.code === CODE.success) {
-            const data = res.result || res.data;
-            const msg = res.msg || res.message;
+            const data = res.result;
+            const msg = res.msg;
             if (msg && msg.length) {
               data.msg = msg;
             }

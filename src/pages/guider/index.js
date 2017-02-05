@@ -14,7 +14,31 @@ Page({
       title: '加载中',
       icon: 'loading'
     });
-    if (!wx.app.data.session) {
+    wx.app.getSession()
+    .then(() => {
+      // request EnvUserInfo
+      new Service()
+      .request({
+        url: '/api/common/getUserInfo',
+        method: 'POST'
+      })
+      .then((model) => {
+        // 跳转到个人主页
+        const role = model.get('role');
+        wx.redirectTo({
+          url: `pages/user/${wx.app.data.roleMap[role]}/index`
+        });
+      })
+      .catch((reason) => {
+        console.log(reason);
+        wx.showModal({
+          title: '友情提示',
+          content: `${reason}`,
+          showCancel: false
+        });
+      });
+    })
+    .catch(() => {
       this.setData({
         images: [
           'https://gw.alicdn.com/tps/i2/T1eppkFThaXXcbqQZo-320-480.png',
@@ -23,19 +47,7 @@ Page({
         ]
       });
       setTimeout(() => wx.hideToast(), 3e2);
-    } else {
-      // request EnvUserInfo
-      new Service()
-      .request({
-        url: '/api/getUserInfo'
-      })
-      .then(() => {
-        // 跳转到个人主页
-      })
-      .catch((reason) => {
-        console.log(reason);
-      });
-    }
+    });
   },
   // Events
   swiperchange(e) {

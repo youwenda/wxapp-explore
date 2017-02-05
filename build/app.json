@@ -1,10 +1,10 @@
 {
   "pages":[
+    "pages/guider/index",    
+    "pages/login/index",
     "pages/login/protocol",
-    
-    "pages/guider/index",
-
-    "pages/login/index"
+    "pages/user/doctor/index",
+    "pages/user/patient/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",
