@@ -4,11 +4,18 @@
   "description": "微信小程序开发模块",
   "main": "app.js",
   "scripts": {
+    "precommit": "npm run lint",
+    "commitmsg": "npm run lint:msg",
+    "lint": "eslint --cache --ignore-path .gitignore --ext .jsx,.js src",
+    "lint:msg": "validate-commit-msg",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/youwenda/dph-fe.git"
+  },
+  "engines": {
+    "node": ">=4.4.5"
   },
   "author": "youwenda@163.com",
   "license": "ISC",
@@ -16,6 +23,23 @@
     "url": "https://github.com/youwenda/dph-fe/issues"
   },
   "homepage": "https://github.com/youwenda/dph-fe#readme",
+  "config": {
+    "validate-commit-msg": {
+      "types": [
+        "feat",
+        "fix",
+        "docs",
+        "style",
+        "refactor",
+        "perf",
+        "test",
+        "chore",
+        "revert"
+      ],
+      "warnOnFail": false,
+      "maxSubjectLength": 100
+    }
+  },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
     "del": "^2.2.2",
@@ -26,7 +50,9 @@
     "gulp-load-plugins": "^1.4.0",
     "gulp-uglify": "^2.0.0",
     "gulp-watch": "^4.3.11",
-    "through2": "^2.0.3"
+    "husky": "^0.13.1",
+    "through2": "^2.0.3",
+    "validate-commit-msg": "^2.11.1"
   },
   "dependencies": {
     "babel-core": "^6.22.1",

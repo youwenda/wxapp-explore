@@ -28,7 +28,8 @@ Page({
       }
     });
   },
-  radioChange (e) {
+  radioChange(e) {
+    /* eslint eqeqeq: 0 */
     const roleItems = this.data.roleItems;
     for (let i = 0, len = roleItems.length; i < len; i++) {
       roleItems[i].checked = roleItems[i].value == e.detail.value;
