@@ -2,7 +2,7 @@ import wx from './weex';
 import Event from './event';
 import Model from './model';
 
-const HOST = 'https://dinghuotuxiu.com';
+const HOST = 'https://www.healcloud.cn';
 const HTTPS_REG = /^https?\/\//;
 const SUFFIX = '.json';
 const SUFFIX_REG = /\.json$/;

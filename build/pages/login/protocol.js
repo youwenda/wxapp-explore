@@ -44,6 +44,7 @@ Page({
     });
   },
   radioChange: function radioChange(e) {
+    /* eslint eqeqeq: 0 */
     var roleItems = this.data.roleItems;
     for (var i = 0, len = roleItems.length; i < len; i++) {
       roleItems[i].checked = roleItems[i].value == e.detail.value;

@@ -35,7 +35,7 @@ var _model2 = _interopRequireDefault(_model);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var HOST = 'https://dinghuotuxiu.com';
+var HOST = 'https://www.healcloud.cn';
 var HTTPS_REG = /^https?\/\//;
 var SUFFIX = '.json';
 var SUFFIX_REG = /\.json$/;

@@ -8,6 +8,7 @@ const noPromiseMethods = {
   canvasToTempFilePath: 1,
   hideKeyboard: 1
 };
+
 /* globals wx, getApp, getCurrentPages */
 const weex = {
   // 原始wx对象
